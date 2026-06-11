@@ -1,20 +1,35 @@
 def get_retention_strategy(probability):
 
     if probability >= 0.80:
+
         return [
-            "Offer premium loyalty discount",
-            "Assign dedicated customer support",
-            "Provide free data package"
+            "High Churn Risk",
+            "Assign Dedicated Relationship Manager",
+            "Offer Premium Loyalty Discount",
+            "Provide Free Data Booster",
+            "Prioritize Complaint Resolution"
         ]
 
-    elif probability >= 0.50:
+    elif probability >= 0.60:
+
         return [
-            "Offer retention promotion",
-            "Provide bonus data benefits",
-            "Send personalized offers"
+            "Medium Churn Risk",
+            "Offer Retention Promotion",
+            "Provide Bonus Data Benefits",
+            "Recommend Better Plan"
+        ]
+
+    elif probability >= 0.40:
+
+        return [
+            "Moderate Churn Risk",
+            "Send Personalized Offers",
+            "Increase Customer Engagement"
         ]
 
     else:
+
         return [
-            "Customer is low churn risk"
+            "Low Churn Risk",
+            "Maintain Regular Customer Engagement"
         ]

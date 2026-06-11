@@ -1,22 +1,29 @@
 import joblib
 import pandas as pd
 
-# Load trained model
 model = joblib.load("models/churn_model.pkl")
 
-
 def predict_churn(customer_data):
-    """
-    Accept customer data and return prediction + probability
-    """
 
-    # Convert input into dataframe
     df = pd.DataFrame([customer_data])
+    print("INPUT FEATURES:")
+    print(df.columns.tolist())
+    print("MODEL FEATURES:")
+    print(model.feature_names_in_.tolist())
+    try:
+        prediction = model.predict(df)[0]
+        probability = model.predict_proba(df)[0][1]
 
-    # Prediction
-    prediction = model.predict(df)[0]
+        return prediction, probability
 
-    # Probability
-    probability = model.predict_proba(df)[0][1]
+    except Exception as e:
+        print("\nINPUT COLUMNS:")
+        print(df.columns.tolist())
 
-    return prediction, probability
+        print("\nMODEL COLUMNS:")
+        print(model.feature_names_in_.tolist())
+
+        print("\nERROR:")
+        print(e)
+
+        raise
